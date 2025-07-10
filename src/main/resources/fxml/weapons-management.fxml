@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="5" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.WeaponsManagementController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Weapons Management" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Add Weapon" onAction="#handleAddWeapon" styleClass="primary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Search and Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search weapons..." HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="filterTypeComboBox" promptText="Filter by Type" prefWidth="150"/>
+        <Button text="Search" onAction="#handleSearch"/>
+        <Button text="Clear" onAction="#handleClear"/>
+    </HBox>
+
+    <!-- Weapons Table -->
+    <TableView fx:id="weaponsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="serialNumberColumn" text="Serial Number" prefWidth="150"/>
+            <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="typeColumn" text="Type" prefWidth="120"/>
+            <TableColumn fx:id="assignedToColumn" text="Assigned To" prefWidth="150"/>
+            <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+
+</VBox> 

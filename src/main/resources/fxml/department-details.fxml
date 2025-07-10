@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="org.example.controllers.DepartmentDetailsController"
+      styleClass="form-container"
+      prefHeight="600" maxWidth="1000">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleClose" styleClass="primary-button"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Department Details" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="editButton" text="Edit Department" onAction="#handleEdit" styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Department Information -->
+    <GridPane hgap="20" vgap="10" styleClass="info-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="80" prefWidth="120"/>
+            <ColumnConstraints minWidth="120" prefWidth="150"/>
+            <ColumnConstraints minWidth="80" prefWidth="120"/>
+            <ColumnConstraints minWidth="120" prefWidth="150"/>
+        </columnConstraints>
+        
+        <Label text="Department Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+        <Label fx:id="departmentNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="value-label"/>
+        
+        <Label text="Department Head:" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="field-label"/>
+        <Label fx:id="departmentHeadLabel" GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="value-label"/>
+        
+        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+        <Label fx:id="departmentDescriptionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="value-label" wrapText="true"/>
+        
+        <Label text="Assigned Block:" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="field-label"/>
+        <Label fx:id="departmentBlockLabel" GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="value-label"/>
+    </GridPane>
+
+    <!-- Main Content -->
+    <ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
+        <VBox spacing="10">
+            <!-- Staff Members Section -->
+            <TitledPane text="Staff Members" expanded="true" VBox.vgrow="ALWAYS">
+                <VBox spacing="10">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="staffSearchField" promptText="Search staff..." HBox.hgrow="ALWAYS"/>
+                        <Button text="Add Staff" onAction="#handleAddStaff" styleClass="primary-button"/>
+                    </HBox>
+                    <TableView fx:id="staffTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="staffIdColumn" text="ID" prefWidth="40"/>
+                            <TableColumn fx:id="staffNameColumn" text="Name" prefWidth="120"/>
+                            <TableColumn fx:id="staffRoleColumn" text="Role" prefWidth="100"/>
+                            <TableColumn fx:id="staffSupervisorColumn" text="Supervisor" prefWidth="120"/>
+                            <TableColumn fx:id="staffActionsColumn" text="Actions" prefWidth="200"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No staff members found"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Department Expenses Button -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="View Department Expenses" onAction="#handleViewExpenses" styleClass="primary-button" style="-fx-font-size: 14px; -fx-padding: 10 20;"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+
+    <stylesheets>
+        <URL value="@/styles/dashboard.css"/>
+    </stylesheets>
+
+</VBox> 

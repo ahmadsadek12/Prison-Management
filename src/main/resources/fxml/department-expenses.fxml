@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="org.example.controllers.DepartmentExpensesController"
+      styleClass="form-container"
+      prefHeight="600" maxWidth="1000">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="departmentNameLabel" text="Department Expenses" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <!-- Main Content -->
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <!-- Department Expenses Section -->
+        <TitledPane text="Department Expenses" expanded="true" VBox.vgrow="ALWAYS">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="expenseSearchField" promptText="Search expenses..." HBox.hgrow="ALWAYS"/>
+                    <Button text="Add Expense" onAction="#handleAddExpense" styleClass="primary-button"/>
+                </HBox>
+                <TableView fx:id="expensesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="expenseIdColumn" text="ID" prefWidth="40"/>
+                        <TableColumn fx:id="expenseAmountColumn" text="Amount" prefWidth="80"/>
+                        <TableColumn fx:id="expenseDateColumn" text="Due Date" prefWidth="100"/>
+                        <TableColumn fx:id="expenseStatusColumn" text="Status" prefWidth="80"/>
+                        <TableColumn fx:id="expenseActionsColumn" text="Actions" prefWidth="100"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="No expenses found"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+        </TitledPane>
+    </VBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+
+</VBox> 

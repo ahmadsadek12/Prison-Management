@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="5" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.CellDetailsController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="10" right="15" bottom="10" left="15"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Cell Details" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addPrisonerButton" text="Add Prisoner" onAction="#handleAddPrisoner" styleClass="primary-button"/>
+        <Button text="Edit Cell" onAction="#handleEditCell" styleClass="primary-button"/>
+        <Button text="Back" onAction="#handleBack" styleClass="secondary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Cell Information -->
+    <GridPane hgap="8" vgap="3" styleClass="info-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="80" prefWidth="120"/>
+            <ColumnConstraints minWidth="150" prefWidth="250" hgrow="ALWAYS"/>
+        </columnConstraints>
+        
+        <Label text="Cell ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+        <Label fx:id="cellIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="value-label"/>
+        
+        <Label text="Cell Type:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+        <Label fx:id="cellTypeLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="value-label"/>
+        
+        <Label text="Capacity:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="field-label"/>
+        <Label fx:id="cellCapacityLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="value-label"/>
+        
+        <Label text="Occupancy:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
+        <Label fx:id="cellOccupancyLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="value-label"/>
+        
+        <Label text="Block:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="field-label"/>
+        <Label fx:id="cellBlockLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="value-label"/>
+    </GridPane>
+
+    <!-- Prisoners Section -->
+    <TitledPane text="Prisoners" expanded="true">
+        <VBox spacing="5">
+            <TableView fx:id="prisonersTable" VBox.vgrow="ALWAYS" minHeight="200">
+                <columns>
+                    <TableColumn fx:id="prisonerIdColumn" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="prisonerNameColumn" text="Name" prefWidth="150"/>
+                    <TableColumn fx:id="prisonerGenderColumn" text="Gender" prefWidth="80"/>
+                    <TableColumn fx:id="prisonerAgeColumn" text="Age" prefWidth="60"/>
+                    <TableColumn fx:id="prisonerSentenceStartColumn" text="Start" prefWidth="100"/>
+                    <TableColumn fx:id="prisonerSentenceEndColumn" text="End" prefWidth="100"/>
+                    <TableColumn fx:id="prisonerActionsColumn" text="Actions" prefWidth="80"/>
+                </columns>
+                <placeholder>
+                    <Label text="No prisoners assigned"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

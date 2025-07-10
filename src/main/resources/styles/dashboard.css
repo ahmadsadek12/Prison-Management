@@ -1,0 +1,323 @@
+/* General Styles */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Form Container */
+.form-container {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+/* Compact form container for department details */
+.form-container.compact {
+    -fx-padding: 8px;
+    -fx-spacing: 3px;
+}
+
+/* Form Title */
+.form-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Compact form title */
+.form-title.compact {
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 5 0;
+}
+
+/* Field Labels */
+.field-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+/* Compact field labels */
+.field-label.compact {
+    -fx-font-size: 11px;
+}
+
+/* Value labels */
+.value-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+/* Compact value labels */
+.value-label.compact {
+    -fx-font-size: 12px;
+}
+
+/* Buttons */
+.primary-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.secondary-button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #333;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Text Fields and Text Areas */
+.text-field, .text-area {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #4CAF50;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4px;
+}
+
+.combo-box:focused {
+    -fx-border-color: #4CAF50;
+}
+
+/* DatePicker */
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4px;
+}
+
+.date-picker:focused {
+    -fx-border-color: #4CAF50;
+}
+
+/* Tables */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f8f8;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e3f2fd;
+}
+
+/* Separator */
+.separator {
+    -fx-background-color: #ddd;
+}
+
+/* Common text styles */
+.label {
+    -fx-font-size: 13px;
+}
+
+.section-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-padding: 15 0 10 0;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Table styles */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+
+.table-view .column-header {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+    -fx-border-color: transparent transparent #ddd transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #eee transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* Button styles */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #2472a4;
+}
+
+/* Back button style */
+.back-button {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.back-button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Input field styles */
+.text-field {
+    -fx-padding: 8;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: white;
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.2), 5, 0, 0, 0);
+}
+
+.choice-box, .combo-box {
+    -fx-padding: 5;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: white;
+}
+
+.choice-box:focused, .combo-box:focused {
+    -fx-border-color: #3498db;
+}
+
+/* Department specific styles */
+.departments-container {
+    -fx-spacing: 15;
+    -fx-padding: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+
+.department-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.department-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+/* Search container styles */
+.search-container {
+    -fx-spacing: 10;
+    -fx-padding: 15;
+    -fx-background-color: white;
+    -fx-background-radius: 5 5 0 0;
+    -fx-border-color: transparent transparent #eee transparent;
+}
+
+/* Status indicators */
+.status-indicator {
+    -fx-padding: 5 10;
+    -fx-background-radius: 3;
+    -fx-font-size: 12px;
+}
+
+.status-active {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+}
+
+.status-inactive {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+/* Error styles */
+.error-label {
+    -fx-text-fill: #e74c3c;
+    -fx-font-size: 12px;
+    -fx-padding: 5 0 0 0;
+}
+
+.error-field {
+    -fx-border-color: #e74c3c;
+}
+
+/* Success message styles */
+.success-message {
+    -fx-text-fill: #2ecc71;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-background-color: #f0fff0;
+    -fx-background-radius: 5;
+    -fx-border-color: #d0f0d0;
+    -fx-border-radius: 5;
+}
+
+/* Clickable label styles */
+.clickable-label {
+    -fx-text-fill: #3498db;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.clickable-label:hover {
+    -fx-text-fill: #2980b9;
+}
+
+.clickable-label:pressed {
+    -fx-text-fill: #2472a4;
+} 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.ExpensesController"
+      spacing="10"
+      prefHeight="600">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Expenses Management" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Add Expense" onAction="#showAddExpenseForm"/>
+    </HBox>
+
+    <!-- Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <DatePicker fx:id="startDate" promptText="Start Date"/>
+        <DatePicker fx:id="endDate" promptText="End Date"/>
+        <ComboBox fx:id="departmentFilter" promptText="Department"/>
+        <ComboBox fx:id="categoryFilter" promptText="Category"/>
+        <Button text="Apply Filter" onAction="#handleFilter"/>
+    </HBox>
+
+    <!-- Expenses Table -->
+    <TableView fx:id="expensesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="expenseIdCol" text="ID"/>
+            <TableColumn fx:id="departmentCol" text="Department"/>
+            <TableColumn fx:id="amountCol" text="Amount"/>
+            <TableColumn fx:id="dueDateCol" text="Due Date"/>
+            <TableColumn fx:id="statusCol" text="Status"/>
+            <TableColumn fx:id="actionsCol" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <!-- Summary Section -->
+    <GridPane hgap="20" vgap="10">
+        <padding>
+            <Insets top="10"/>
+        </padding>
+
+        <Label text="Total Expenses:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="totalExpensesLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="By Department:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label fx:id="expensesByDeptLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <Label text="By Category:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="expensesByCategoryLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Monthly Average:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label fx:id="monthlyAverageLabel" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    </GridPane>
+
+    <!-- Chart Section -->
+    <TabPane>
+        <Tab text="Monthly Trend">
+            <LineChart fx:id="monthlyTrendChart">
+                <xAxis>
+                    <CategoryAxis label="Month"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Amount"/>
+                </yAxis>
+            </LineChart>
+        </Tab>
+        <Tab text="Department Distribution">
+            <PieChart fx:id="departmentDistChart"/>
+        </Tab>
+    </TabPane>
+
+    <!-- Bottom Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Export Report" onAction="#handleExportReport"/>
+        <Button text="Back to Dashboard" onAction="#goBack"/>
+    </HBox>
+</VBox> 

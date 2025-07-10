@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.PrisonController"
+      spacing="5"
+      styleClass="form-container">
+    <padding>
+        <Insets top="10" right="20" bottom="10" left="20"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Prison Dashboard" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <!-- Prison Details Section -->
+    <GridPane hgap="20" vgap="5" styleClass="info-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="150" prefWidth="200"/>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="150" prefWidth="200"/>
+        </columnConstraints>
+        <padding>
+            <Insets bottom="10"/>
+        </padding>
+
+        <!-- Prison Name and Address -->
+        <Label text="Prison Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="prisonNameLabel" styleClass="value-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Warden:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <Label fx:id="wardenNameLabel" styleClass="value-label" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+        <!-- Statistics -->
+        <Label text="Capacity:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="capacityLabel" styleClass="value-label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Availability:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <Label fx:id="availableCellsLabel" styleClass="value-label" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+    </GridPane>
+
+    <!-- Quick Actions -->
+    <TitledPane text="Quick Actions" expanded="true">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="View All Staff" onAction="#handleStaff"/>
+            <Button text="View All Prisoners" onAction="#handlePrisoners"/>
+            <Button text="All Weapons" onAction="#handleAllWeapons"/>
+            <Button text="Add Block" onAction="#handleAddBlock"/>
+            <Button text="Edit Prison" onAction="#handleEditPrison"/>
+        </HBox>
+    </TitledPane>
+
+    <!-- Blocks Section -->
+    <TitledPane text="Prison Blocks" expanded="true" VBox.vgrow="ALWAYS">
+        <VBox spacing="5">
+            <!-- Search -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Enter block type..." HBox.hgrow="ALWAYS"/>
+                <Button text="Search" onAction="#handleSearch"/>
+            </HBox>
+
+            <!-- Blocks Table -->
+            <TableView fx:id="blocksTable" VBox.vgrow="ALWAYS" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="blockTypeCol" text="Type" prefWidth="150"/>
+                    <TableColumn fx:id="cellsCol" text="Cells" prefWidth="100"/>
+                    <TableColumn fx:id="prisonersCol" text="Prisoners" prefWidth="100"/>
+                    <TableColumn fx:id="expensesCol" text="Expenses" prefWidth="100"/>
+                    <TableColumn fx:id="medicalDeptCol" text="Medical Dept" prefWidth="100"/>
+                    <TableColumn fx:id="actionsCol" text="Actions" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <stylesheets>
+        <String fx:value="/styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

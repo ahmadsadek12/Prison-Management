@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.StaffController"
+      spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <stylesheets>
+        <String fx:value="/styles/dashboard.css"/>
+    </stylesheets>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="← Back to Dashboard" onAction="#handleBackToDashboard"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="All Staff" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <TextField fx:id="searchField" promptText="Search staff by name, role, department, supervisor, or gender..." HBox.hgrow="ALWAYS"/>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="💡 Double-click on a staff member to view details" style="-fx-text-fill: #666; -fx-font-style: italic;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Right-click for more options" style="-fx-text-fill: #666; -fx-font-style: italic;"/>
+    </HBox>
+    
+    <TableView fx:id="staffTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="ageCol" text="Age" prefWidth="50"/>
+            <TableColumn fx:id="genderCol" text="Gender" prefWidth="80"/>
+            <TableColumn fx:id="roleCol" text="Role" prefWidth="100"/>
+            <TableColumn fx:id="departmentCol" text="Department" prefWidth="100"/>
+            <TableColumn fx:id="supervisorCol" text="Supervisor" prefWidth="120"/>
+            <TableColumn fx:id="salaryCol" text="Salary" prefWidth="100"/>
+            <TableColumn fx:id="actionsCol" text="Actions" prefWidth="80"/>
+        </columns>
+    </TableView>
+</VBox>

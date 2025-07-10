@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.RoomFormController"
+      spacing="10"
+      styleClass="form-container">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <Label text="Room Information" styleClass="form-title"/>
+    <Separator/>
+
+    <!-- Form Fields -->
+    <GridPane vgap="10" hgap="10" styleClass="form-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="120"/>
+            <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <!-- Room Type -->
+        <Label text="Room Type:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+        <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <ComboBox fx:id="typeComboBox" promptText="Select room type" maxWidth="Infinity"/>
+            <Label fx:id="typeError" styleClass="error-label" managed="false" visible="false"/>
+        </VBox>
+
+        <!-- Room Number -->
+        <Label text="Room Number:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+        <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="roomNumberField" promptText="Enter room number"/>
+            <Label fx:id="roomNumberError" styleClass="error-label" managed="false" visible="false"/>
+        </VBox>
+
+        <!-- Description -->
+        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="field-label"/>
+        <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextArea fx:id="descriptionField" promptText="Enter room description"
+                      prefRowCount="3" wrapText="true"/>
+            <Label fx:id="descriptionError" styleClass="error-label" managed="false" visible="false"/>
+        </VBox>
+
+        <!-- Department -->
+        <Label text="Department:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
+        <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <HBox spacing="10">
+                <ComboBox fx:id="departmentComboBox" promptText="Select department" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="New Department" onAction="#handleNewDepartment" styleClass="secondary-button"/>
+            </HBox>
+            <Label fx:id="departmentError" styleClass="error-label" managed="false" visible="false"/>
+        </VBox>
+
+        <!-- Capacity -->
+        <Label text="Capacity:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="field-label"/>
+        <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="capacityField" promptText="Enter room capacity"/>
+            <Label fx:id="capacityError" styleClass="error-label" managed="false" visible="false"/>
+        </VBox>
+
+        <!-- Equipment -->
+        <Label text="Equipment:" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="field-label"/>
+        <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <HBox spacing="10">
+                <ComboBox fx:id="equipmentComboBox" promptText="Select equipment" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Add" onAction="#handleAddEquipment" styleClass="secondary-button"/>
+            </HBox>
+            <ListView fx:id="equipmentListView" prefHeight="100"/>
+            <Label fx:id="equipmentError" styleClass="error-label" managed="false" visible="false"/>
+        </VBox>
+    </GridPane>
+
+    <!-- Status Message -->
+    <Label fx:id="statusLabel" styleClass="status-label" managed="false" visible="false" wrapText="true"/>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="button-container">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button" cancelButton="true"/>
+        <Button text="Save Room" onAction="#handleSave" styleClass="primary-button" defaultButton="true"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

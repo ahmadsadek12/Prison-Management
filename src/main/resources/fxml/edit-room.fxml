@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.EditRoomController"
+      spacing="15"
+      styleClass="form-container">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <Label text="Edit Room" styleClass="form-title"/>
+
+    <!-- Room Type Input -->
+    <VBox spacing="5">
+        <Label text="Room Type:"/>
+        <TextField fx:id="roomTypeField" promptText="Enter room type"/>
+    </VBox>
+
+    <!-- Description Input -->
+    <VBox spacing="5">
+        <Label text="Description:"/>
+        <TextArea fx:id="descriptionArea" promptText="Enter room description" prefRowCount="3" wrapText="true"/>
+    </VBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancelEditRoom"/>
+        <Button text="Save Changes" onAction="#handleSaveRoomChanges"/>
+    </HBox>
+
+    <stylesheets>
+        <String fx:value="/styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.VisitorFormController"
+      styleClass="form-container">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <Label text="Visitor Registration" styleClass="form-title"/>
+    <Separator/>
+
+    <!-- Existing Visitor Selection -->
+    <TitledPane text="Select Existing Visitor" expanded="true">
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search visitors..." HBox.hgrow="ALWAYS"/>
+                <Button text="Search" onAction="#handleSearch" styleClass="secondary-button"/>
+            </HBox>
+            <ComboBox fx:id="visitorComboBox" promptText="Select visitor" maxWidth="Infinity"/>
+            <VBox spacing="5">
+                <Label text="Visitor Details:" styleClass="section-label"/>
+                <Label fx:id="visitorDetailsLabel" wrapText="true" styleClass="details-label"/>
+            </VBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- New Visitor Form -->
+    <TitledPane text="Add New Visitor" expanded="false" fx:id="newVisitorPane">
+        <VBox spacing="10">
+            <GridPane vgap="10" hgap="10" styleClass="form-grid">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100" prefWidth="120"/>
+                    <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Personal Information -->
+                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <TextField fx:id="visitorNameField" promptText="Enter visitor's full name"/>
+                    <Label fx:id="nameError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="ID Number:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <TextField fx:id="idNumberField" promptText="Enter national ID/passport number"/>
+                    <Label fx:id="idError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <TextField fx:id="phoneField" promptText="Enter contact number"/>
+                    <Label fx:id="phoneError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="Relationship:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <ComboBox fx:id="relationshipComboBox" promptText="Select relationship to prisoner" maxWidth="Infinity"/>
+                    <Label fx:id="relationshipError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <TextArea fx:id="addressField" promptText="Enter visitor's address" prefRowCount="2"/>
+                    <Label fx:id="addressError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </TitledPane>
+
+    <!-- Visit Details -->
+    <TitledPane text="Visit Details" expanded="true">
+        <VBox spacing="10">
+            <GridPane vgap="10" hgap="10" styleClass="form-grid">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100" prefWidth="120"/>
+                    <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="Prisoner:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <ComboBox fx:id="prisonerComboBox" promptText="Select prisoner to visit" maxWidth="Infinity"/>
+                    <Label fx:id="prisonerError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="Visit Date:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <DatePicker fx:id="visitDatePicker" promptText="Select visit date" maxWidth="Infinity"/>
+                    <Label fx:id="dateError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="Visit Time:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <HBox spacing="5">
+                        <ComboBox fx:id="hourComboBox" prefWidth="100" promptText="Hour"/>
+                        <Label text=":" styleClass="field-label"/>
+                        <ComboBox fx:id="minuteComboBox" prefWidth="100" promptText="Minute"/>
+                    </HBox>
+                    <Label fx:id="timeError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+
+                <Label text="Purpose:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
+                <VBox spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <TextArea fx:id="purposeField" promptText="Enter purpose of visit" prefRowCount="2"/>
+                    <Label fx:id="purposeError" styleClass="error-label" managed="false" visible="false"/>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </TitledPane>
+
+    <!-- Status Message -->
+    <Label fx:id="statusLabel" styleClass="status-label" managed="false" visible="false" wrapText="true"/>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="button-container">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button" cancelButton="true"/>
+        <Button text="Save Visit" onAction="#handleSave" styleClass="primary-button" defaultButton="true"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

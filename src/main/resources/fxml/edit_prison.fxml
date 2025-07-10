@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.EditPrisonController"
+      spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <GridPane vgap="10" hgap="10">
+        <padding>
+            <Insets top="20" right="0" bottom="0" left="0"/>
+        </padding>
+        
+        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="prisonNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+        
+        <Label text="State:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="prisonStateField" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+        
+        <Label text="City:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="prisonCityField" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+        
+        <Label text="Street:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="prisonStreetField" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+        
+        <Label text="Country:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="prisonCountryField" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cancel" onAction="#handleCancelEditPrison"/>
+        <Button text="Save Changes" onAction="#handleSavePrisonChanges"/>
+    </HBox>
+    
+    <stylesheets>
+        <String fx:value="/styles/dashboard.css"/>
+    </stylesheets>
+</VBox>

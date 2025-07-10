@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.AddVisitorLogController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Add Visitor Log" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Save" onAction="#handleSave" styleClass="primary-button"/>
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Main Content -->
+    <GridPane hgap="10" vgap="10" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="120"/>
+            <ColumnConstraints minWidth="150" prefWidth="200" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <!-- Visitor Selection -->
+        <Label text="Visitor:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <ComboBox fx:id="visitorComboBox" HBox.hgrow="ALWAYS"/>
+            <Button text="➕ New Visitor" onAction="#handleNewVisitor" 
+                    style="-fx-background-color: #f0f0f0; -fx-text-fill: black; -fx-min-width: 130px; -fx-pref-width: 130px; -fx-font-size: 12px; -fx-padding: 8px 12px; -fx-cursor: hand;">
+                <tooltip>
+                    <Tooltip text="Add a new visitor to the system"/>
+                </tooltip>
+            </Button>
+        </HBox>
+
+        <!-- New Visitor Fields -->
+        <Label fx:id="newVisitorNameLabel" text="Name:" styleClass="field-label" 
+               GridPane.columnIndex="0" GridPane.rowIndex="1" visible="false"/>
+        <TextField fx:id="newVisitorNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" visible="false"/>
+
+        <!-- Relationship -->
+        <Label text="Relationship:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="relationshipComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <!-- Visit Date -->
+        <Label text="Visit Date:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="visitDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <!-- Status -->
+        <Label text="Status:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <ComboBox fx:id="statusComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <!-- Comments -->
+        <Label text="Comments:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <TextArea fx:id="commentsArea" GridPane.columnIndex="1" GridPane.rowIndex="5" prefRowCount="3"/>
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

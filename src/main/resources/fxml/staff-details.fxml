@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="3" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.StaffDetailsController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="3" right="3" bottom="3" left="3"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="3" alignment="CENTER_LEFT">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Staff Details" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Edit" onAction="#handleEdit" styleClass="primary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Main Content -->
+    <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.4">
+        <!-- Left Section - Staff Info -->
+        <VBox spacing="3">
+            <GridPane hgap="3" vgap="3">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100" prefWidth="120"/>
+                    <ColumnConstraints minWidth="150" prefWidth="200" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Basic Info -->
+                <Label text="Staff ID:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="staffIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Name:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="staffNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Age:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="staffAgeLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Gender:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="staffGenderLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Role:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="staffRoleLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <Label text="Department:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label fx:id="staffDepartmentLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <Label text="Salary:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <Label fx:id="staffSalaryLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                <Label text="Phone:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <Label fx:id="staffPhoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+                <Label text="Date of Birth:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <Label fx:id="staffDobLabel" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+            </GridPane>
+        </VBox>
+
+        <!-- Right Section - Guns -->
+        <VBox spacing="3">
+            <HBox spacing="3" alignment="CENTER_LEFT">
+                <Label text="Assigned Guns" styleClass="section-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Assign Gun" onAction="#handleAssignGun" styleClass="primary-button"/>
+            </HBox>
+            <TableView fx:id="gunsTable" VBox.vgrow="ALWAYS" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="gunSerialNumberColumn" text="Serial Number" prefWidth="120"/>
+                    <TableColumn fx:id="gunNameColumn" text="Name" prefWidth="120"/>
+                    <TableColumn fx:id="gunTypeColumn" text="Type" prefWidth="100"/>
+                    <TableColumn fx:id="gunActionsColumn" text="Actions" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </SplitPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+
+</VBox> 

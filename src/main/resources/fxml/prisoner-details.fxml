@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="5" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.PrisonerDetailsController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="5" right="5" bottom="5" left="5"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Prisoner Details" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Edit" onAction="#handleEditDetails" styleClass="primary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Main Content -->
+    <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.4">
+        <!-- Left Section - Prisoner Info -->
+        <VBox spacing="5">
+            <GridPane hgap="5" vgap="5">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100" prefWidth="120"/>
+                    <ColumnConstraints minWidth="150" prefWidth="200" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Basic Info -->
+                <Label text="Name:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Age:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="ageLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Gender:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="genderLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <!-- Sentence Info -->
+                <Label text="Start:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="sentenceStartLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="End:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="sentenceEndLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <Label text="Block:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label fx:id="blockLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <Label text="Duration:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <Label fx:id="sentenceDurationLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                <Label text="Served:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <Label fx:id="timeServedLabel" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+            </GridPane>
+        </VBox>
+
+        <!-- Right Section - Tabs -->
+        <TabPane VBox.vgrow="ALWAYS">
+            <!-- Crimes Tab -->
+            <Tab text="Crimes" closable="false">
+                <VBox spacing="5">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <TextField fx:id="crimeSearchField" promptText="Search crimes..." HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="crimeFilterComboBox" promptText="Filter" prefWidth="120"/>
+                        <Button text="Add Crime" onAction="#handleAddCrime" styleClass="primary-button"/>
+                    </HBox>
+                    <TableView fx:id="crimesTable" VBox.vgrow="ALWAYS" prefHeight="150">
+                        <columns>
+                            <TableColumn fx:id="crimeNameColumn" text="Name" prefWidth="150"/>
+                            <TableColumn fx:id="crimeTypeColumn" text="Type" prefWidth="100"/>
+                            <TableColumn fx:id="crimeDateColumn" text="Sentence Start" prefWidth="100"/>
+                            <TableColumn fx:id="crimeEndDateColumn" text="Sentence End" prefWidth="100"/>
+                            <TableColumn fx:id="crimeActionsColumn" text="Actions" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Visitors Tab -->
+            <Tab text="Visitors" closable="false">
+                <VBox spacing="5">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <TextField fx:id="visitorSearchField" promptText="Search visitors..." HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="visitorFilterComboBox" promptText="Filter" prefWidth="120"/>
+                        <Button text="Add Visit" onAction="#handleAddVisit" styleClass="primary-button"/>
+                    </HBox>
+                    <TableView fx:id="visitorLogsTable" VBox.vgrow="ALWAYS" prefHeight="150">
+                        <columns>
+                            <TableColumn fx:id="visitorNameColumn" text="Name" prefWidth="150"/>
+                            <TableColumn fx:id="relationshipColumn" text="Relationship" prefWidth="100"/>
+                            <TableColumn fx:id="visitDateColumn" text="Date" prefWidth="100"/>
+                            <TableColumn fx:id="visitStatusColumn" text="Status" prefWidth="100"/>
+                            <TableColumn fx:id="visitActionsColumn" text="Actions" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- Medical Records Tab -->
+            <Tab text="Medical" closable="false">
+                <VBox spacing="5">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <TextField fx:id="medicalSearchField" promptText="Search records..." HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="medicalFilterComboBox" promptText="Filter" prefWidth="120"/>
+                        <Button text="Add Record" onAction="#handleAddMedicalRecord" styleClass="primary-button"/>
+                    </HBox>
+                    <TableView fx:id="medicalRecordsTable" VBox.vgrow="ALWAYS" prefHeight="150">
+                        <columns>
+                            <TableColumn fx:id="medicalDateColumn" text="Date" prefWidth="100"/>
+                            <TableColumn fx:id="medicalTypeColumn" text="Type" prefWidth="100"/>
+                            <TableColumn fx:id="medicalDescriptionColumn" text="Description" prefWidth="200"/>
+                            <TableColumn fx:id="medicalStatusColumn" text="Status" prefWidth="100"/>
+                            <TableColumn fx:id="medicalActionsColumn" text="Actions" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </SplitPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.PrisonerController"
+      spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <stylesheets>
+        <String fx:value="/styles/dashboard.css"/>
+    </stylesheets>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="← Back to Dashboard" onAction="#goBack"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="All Prisoners" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="prisonerSearchField" promptText="Search prisoners by name..." HBox.hgrow="ALWAYS"/>
+        <Button text="Search" onAction="#handleSearch"/>
+    </HBox>
+    
+    <Label text="Double-click on a prisoner to view details" style="-fx-font-style: italic; -fx-text-fill: #666;"/>
+    
+    <TableView fx:id="prisonersTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="prisonerIdCol" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="prisonerNameCol" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="dobCol" text="Date of Birth" prefWidth="100"/>
+            <TableColumn fx:id="prisonerGenderCol" text="Gender" prefWidth="80"/>
+            <TableColumn fx:id="sentenceStartCol" text="Sentence Start" prefWidth="100"/>
+            <TableColumn fx:id="sentenceEndCol" text="Sentence End" prefWidth="100"/>
+            <TableColumn fx:id="prisonerActionsCol" text="Actions" prefWidth="80"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.EditBlockController"
+      spacing="15"
+      styleClass="form-container">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <Label text="Edit Block" styleClass="form-title"/>
+
+    <!-- Block Type Input -->
+    <VBox spacing="5">
+        <Label text="Block Type:"/>
+        <TextField fx:id="blockTypeField" promptText="Enter block type"/>
+    </VBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancelEditBlock"/>
+        <Button text="Save Changes" onAction="#handleSaveBlockChanges"/>
+    </HBox>
+
+    <stylesheets>
+        <String fx:value="/styles/dashboard.css"/>
+    </stylesheets>
+</VBox>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.AddCrimeController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Add Crime" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Save" onAction="#handleSave" styleClass="primary-button"/>
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Main Content -->
+    <GridPane hgap="10" vgap="10" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="120"/>
+            <ColumnConstraints minWidth="150" prefWidth="200" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Name:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Description:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextArea fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefRowCount="3"/>
+
+        <Label text="Sentence Duration:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="sentenceDurationField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Sentence Start Date:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="sentenceStartDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox>

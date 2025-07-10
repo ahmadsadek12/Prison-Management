@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.MovePrisonerDialogController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Move Prisoner" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Prisoner Information -->
+    <TitledPane text="Prisoner Information" expanded="true">
+        <GridPane hgap="15" vgap="15" styleClass="info-grid">
+            <columnConstraints>
+                <ColumnConstraints minWidth="150" prefWidth="200"/>
+                <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Prisoner ID:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label fx:id="prisonerIdLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Name:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label fx:id="nameLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Current Cell:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label fx:id="currentCellLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Security Level:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label fx:id="securityLevelLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Target Cell Selection -->
+    <TitledPane text="Select Target Cell" expanded="true">
+        <VBox spacing="10">
+            <!-- Search and Filters -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search cells..." HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="cellTypeFilter" promptText="Cell Type" prefWidth="150"/>
+                <ComboBox fx:id="securityLevelFilter" promptText="Security Level" prefWidth="150"/>
+                <ComboBox fx:id="statusFilter" promptText="Status" prefWidth="150"/>
+            </HBox>
+
+            <!-- Available Cells Table -->
+            <TableView fx:id="cellsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="cellIdColumn" text="Cell ID" prefWidth="80"/>
+                    <TableColumn fx:id="cellTypeColumn" text="Type" prefWidth="120"/>
+                    <TableColumn fx:id="blockColumn" text="Block" prefWidth="100"/>
+                    <TableColumn fx:id="securityLevelColumn" text="Security" prefWidth="100"/>
+                    <TableColumn fx:id="capacityColumn" text="Capacity" prefWidth="80"/>
+                    <TableColumn fx:id="occupancyColumn" text="Occupancy" prefWidth="80"/>
+                    <TableColumn fx:id="availableSpacesColumn" text="Available" prefWidth="80"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="No cells found"/>
+                </placeholder>
+            </TableView>
+
+            <!-- Selected Cell Information -->
+            <GridPane hgap="15" vgap="10" styleClass="info-grid" visible="false" fx:id="selectedCellInfo">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="200"/>
+                    <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="Selected Cell:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="selectedCellLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Current Occupants:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="occupantsLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Security Level Match:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="securityMatchLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+        </VBox>
+    </TitledPane>
+
+    <!-- Transfer Details -->
+    <TitledPane text="Transfer Details" expanded="true">
+        <GridPane hgap="15" vgap="15" styleClass="form-grid">
+            <columnConstraints>
+                <ColumnConstraints minWidth="150" prefWidth="200"/>
+                <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Transfer Date:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <DatePicker fx:id="transferDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Label fx:id="dateErrorLabel" styleClass="error-label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Transfer Time:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="transferTimeComboBox" promptText="Select time" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Label fx:id="timeErrorLabel" styleClass="error-label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="Reason:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextArea fx:id="reasonArea" promptText="Enter transfer reason" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <Label fx:id="reasonErrorLabel" styleClass="error-label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+            <Label text="Authorized By:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <ComboBox fx:id="authorizedByComboBox" promptText="Select staff member" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <Label fx:id="authorizedByErrorLabel" styleClass="error-label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Bottom Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="button-container">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
+        <Button text="Move Prisoner" onAction="#handleMove" styleClass="primary-button"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

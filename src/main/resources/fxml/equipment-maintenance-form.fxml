@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.EquipmentMaintenanceFormController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <Label text="Equipment Maintenance" styleClass="form-title"/>
+    <Separator/>
+
+    <!-- Equipment Information -->
+    <TitledPane text="Equipment Details" expanded="true">
+        <GridPane hgap="15" vgap="15" styleClass="form-grid">
+            <columnConstraints>
+                <ColumnConstraints minWidth="120" prefWidth="150"/>
+                <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Equipment Name:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label fx:id="equipmentNameLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Equipment Type:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label fx:id="equipmentTypeLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Location:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label fx:id="locationLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Last Maintenance:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label fx:id="lastMaintenanceLabel" styleClass="value-label" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Maintenance Information -->
+    <TitledPane text="Maintenance Details" expanded="true">
+        <GridPane hgap="15" vgap="15" styleClass="form-grid">
+            <columnConstraints>
+                <ColumnConstraints minWidth="120" prefWidth="150"/>
+                <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Maintenance Type:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <ComboBox fx:id="maintenanceTypeComboBox" promptText="Select maintenance type">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Routine"/>
+                            <String fx:value="Preventive"/>
+                            <String fx:value="Corrective"/>
+                            <String fx:value="Emergency"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label fx:id="maintenanceTypeErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Current Status:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <ComboBox fx:id="statusComboBox" promptText="Select status">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Operational"/>
+                            <String fx:value="Under Maintenance"/>
+                            <String fx:value="Out of Service"/>
+                            <String fx:value="Needs Repair"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label fx:id="statusErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Condition:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <ComboBox fx:id="conditionComboBox" promptText="Select condition">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Excellent"/>
+                            <String fx:value="Good"/>
+                            <String fx:value="Fair"/>
+                            <String fx:value="Poor"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label fx:id="conditionErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Maintenance Date:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <DatePicker fx:id="maintenanceDatePicker"/>
+                <Label fx:id="maintenanceDateErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Assigned Technician:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <ComboBox fx:id="technicianComboBox" promptText="Select technician"/>
+                <Label fx:id="technicianErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Estimated Duration:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <HBox spacing="10">
+                    <TextField fx:id="durationField" promptText="Enter duration" HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="durationUnitComboBox" promptText="Unit" prefWidth="100">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Hours"/>
+                                <String fx:value="Days"/>
+                                <String fx:value="Weeks"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </HBox>
+                <Label fx:id="durationErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Cost:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <HBox spacing="10">
+                    <TextField fx:id="costField" promptText="Enter cost" HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="currencyComboBox" promptText="Currency" prefWidth="100"/>
+                </HBox>
+                <Label fx:id="costErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Description:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <TextArea fx:id="descriptionArea" promptText="Enter maintenance description" prefRowCount="3"/>
+                <Label fx:id="descriptionErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+
+            <Label text="Notes:" styleClass="field-label" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                <TextArea fx:id="notesArea" promptText="Enter additional notes" prefRowCount="3"/>
+                <Label fx:id="notesErrorLabel" styleClass="error-label" visible="false"/>
+            </VBox>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Parts Used -->
+    <TitledPane text="Parts Used" expanded="true">
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ComboBox fx:id="partComboBox" promptText="Select part" HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="quantityField" promptText="Quantity" prefWidth="100"/>
+                <Button text="Add Part" onAction="#handleAddPart" styleClass="secondary-button"/>
+            </HBox>
+            <TableView fx:id="partsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="partNameColumn" text="Part Name" prefWidth="200"/>
+                    <TableColumn fx:id="partNumberColumn" text="Part Number" prefWidth="120"/>
+                    <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
+                    <TableColumn fx:id="costColumn" text="Cost" prefWidth="100"/>
+                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="No parts added"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <!-- Status Message -->
+    <Label fx:id="statusMessage" styleClass="status-message" visible="false"/>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="button-container">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
+        <Button text="Save" onAction="#handleSave" styleClass="primary-button" defaultButton="true"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

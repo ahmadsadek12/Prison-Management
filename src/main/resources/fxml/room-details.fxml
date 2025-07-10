@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="org.example.controllers.RoomDetailsController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Room Details" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Edit Room" onAction="#handleEditRoom" styleClass="secondary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Room Information -->
+    <GridPane hgap="10" vgap="5" styleClass="info-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+        </columnConstraints>
+        
+        <Label text="Room ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+        <Label fx:id="roomIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="value-label"/>
+        
+        <Label text="Room Type:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+        <Label fx:id="roomTypeLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="value-label"/>
+        
+        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="field-label"/>
+        <Label fx:id="roomDescriptionLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="value-label" wrapText="true"/>
+        
+        <Label text="Department:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
+        <Label fx:id="roomDepartmentLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="value-label"/>
+        
+        <Label text="Blocks:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="field-label"/>
+        <Label fx:id="roomBlocksLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="value-label"/>
+    </GridPane>
+
+    <!-- Equipment Section -->
+    <TitledPane text="Equipment" expanded="true">
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Add Equipment" onAction="#handleAddEquipment" styleClass="add-button"/>
+            </HBox>
+            <TableView fx:id="equipmentTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="equipmentIdColumn" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="equipmentNameColumn" text="Name" prefWidth="150"/>
+                    <TableColumn fx:id="equipmentDescriptionColumn" text="Description" prefWidth="200"/>
+                    <TableColumn fx:id="equipmentAmountColumn" text="Amount" prefWidth="80"/>
+                    <TableColumn fx:id="equipmentActionsColumn" text="Actions" prefWidth="180"/>
+                </columns>
+                <placeholder>
+                    <Label text="No equipment assigned"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.AddMedicalRecordController"
+      spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <Label text="Add New Medical Record" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    
+    <GridPane vgap="10" hgap="10">
+        <Label text="Diagnosis:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="diagnosisField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Treatment:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextArea fx:id="treatmentField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Doctor Notes:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextArea fx:id="doctorNotesField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        
+        <Label text="Status:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="statusComboBox" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel"/>
+        <Button text="Save" onAction="#handleSave" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

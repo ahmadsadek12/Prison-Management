@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.StaffController"
+      spacing="10"
+      styleClass="form-container">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Staff Management" styleClass="form-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Add Staff" onAction="#handleAddStaff" styleClass="primary-button"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Search and Filter Section -->
+    <VBox spacing="10" styleClass="search-container">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="searchField" promptText="Search by name, ID, or department" HBox.hgrow="ALWAYS"/>
+            <Button text="Search" onAction="#handleSearch" styleClass="secondary-button"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <ComboBox fx:id="filterRoleComboBox" promptText="Filter by Role" prefWidth="150"/>
+            <ComboBox fx:id="filterDepartmentComboBox" promptText="Filter by Department" prefWidth="150"/>
+            <ComboBox fx:id="filterBlockComboBox" promptText="Filter by Block" prefWidth="150"/>
+            <ComboBox fx:id="filterStatusComboBox" promptText="Filter by Status" prefWidth="150"/>
+            <Button text="Apply Filters" onAction="#handleApplyFilters" styleClass="secondary-button"/>
+            <Button text="Reset" onAction="#handleResetFilters" styleClass="secondary-button"/>
+        </HBox>
+    </VBox>
+
+    <!-- Main Content -->
+    <SplitPane VBox.vgrow="ALWAYS">
+        <!-- Left Side: Staff Table -->
+        <VBox spacing="10">
+            <TableView fx:id="staffTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID" prefWidth="80"/>
+                    <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+                    <TableColumn fx:id="ageCol" text="Age" prefWidth="60"/>
+                    <TableColumn fx:id="genderCol" text="Gender" prefWidth="80"/>
+                    <TableColumn fx:id="roleCol" text="Role" prefWidth="120"/>
+                    <TableColumn fx:id="departmentCol" text="Department" prefWidth="150"/>
+                    <TableColumn fx:id="salaryCol" text="Salary" prefWidth="100"/>
+                    <TableColumn fx:id="blockCol" text="Block" prefWidth="100"/>
+                    <TableColumn fx:id="statusCol" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="actionsCol" text="Actions" prefWidth="150"/>
+                </columns>
+                <placeholder>
+                    <Label text="No staff members found"/>
+                </placeholder>
+            </TableView>
+
+            <!-- Statistics Section -->
+            <TitledPane text="Staff Statistics" expanded="true">
+                <GridPane hgap="20" vgap="10" styleClass="stats-grid">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="150" prefWidth="200"/>
+                        <ColumnConstraints minWidth="100" prefWidth="150"/>
+                        <ColumnConstraints minWidth="150" prefWidth="200"/>
+                        <ColumnConstraints minWidth="100" prefWidth="150"/>
+                    </columnConstraints>
+
+                    <Label text="Total Staff:" styleClass="stats-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="totalStaffLabel" styleClass="stats-value" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="By Department:" styleClass="stats-label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <Label fx:id="staffByDepartmentLabel" styleClass="stats-value" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                    <Label text="By Role:" styleClass="stats-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="staffByRoleLabel" styleClass="stats-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="On Leave:" styleClass="stats-label" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <Label fx:id="staffOnLeaveLabel" styleClass="stats-value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                    <Label text="Active Staff:" styleClass="stats-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="activeStaffLabel" styleClass="stats-value" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="New Hires:" styleClass="stats-label" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Label fx:id="newHiresLabel" styleClass="stats-value" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                </GridPane>
+            </TitledPane>
+        </VBox>
+
+        <!-- Right Side: Charts and Quick Actions -->
+        <VBox spacing="10">
+            <!-- Charts Section -->
+            <TabPane>
+                <Tab text="Department Distribution">
+                    <VBox>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <ComboBox fx:id="chartTypeComboBox" promptText="Chart Type"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="Refresh" onAction="#handleRefreshCharts" styleClass="secondary-button"/>
+                        </HBox>
+                        <PieChart fx:id="departmentDistributionChart"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Role Distribution">
+                    <VBox>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <ComboBox fx:id="roleChartTypeComboBox" promptText="Chart Type"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="Refresh" onAction="#handleRefreshCharts" styleClass="secondary-button"/>
+                        </HBox>
+                        <BarChart fx:id="roleDistributionChart">
+                            <xAxis>
+                                <CategoryAxis label="Role"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Count"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+                </Tab>
+            </TabPane>
+
+            <!-- Quick Actions -->
+            <TitledPane text="Quick Actions" expanded="true">
+                <VBox spacing="10">
+                    <Button text="Schedule Leave" onAction="#handleScheduleLeave" maxWidth="Infinity"/>
+                    <Button text="Assign Department" onAction="#handleAssignDepartment" maxWidth="Infinity"/>
+                    <Button text="Performance Review" onAction="#handlePerformanceReview" maxWidth="Infinity"/>
+                    <Button text="Training Records" onAction="#handleTrainingRecords" maxWidth="Infinity"/>
+                </VBox>
+            </TitledPane>
+        </VBox>
+    </SplitPane>
+
+    <!-- Bottom Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="button-container">
+        <Button text="Generate Report" onAction="#handleGenerateReport" styleClass="secondary-button"/>
+        <Button text="Export Data" onAction="#handleExportData" styleClass="secondary-button"/>
+        <Button text="Print List" onAction="#handlePrintList" styleClass="secondary-button"/>
+        <Button text="Back to Dashboard" onAction="#handleBack" styleClass="primary-button"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 

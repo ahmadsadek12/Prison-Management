@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox fx:id="root" spacing="5" xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.AddPrisonerController"
+      styleClass="form-container">
+    <padding>
+        <Insets top="10" right="15" bottom="10" left="15"/>
+    </padding>
+
+    <!-- Header -->
+    <Label text="Add New Prisoner" styleClass="form-title"/>
+    <Separator/>
+
+    <!-- Form Fields -->
+    <GridPane hgap="8" vgap="3" styleClass="form-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="80" prefWidth="120"/>
+            <ColumnConstraints minWidth="150" prefWidth="250" hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+        <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="form-field"/>
+
+        <Label text="Date of Birth:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+        <DatePicker fx:id="dobField" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="form-field"/>
+
+        <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="field-label"/>
+        <ComboBox fx:id="genderField" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="form-field"/>
+
+        <Label text="Sentence Start:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
+        <DatePicker fx:id="sentenceStartField" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="form-field"/>
+
+        <Label text="Sentence End:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="field-label"/>
+        <DatePicker fx:id="sentenceEndField" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="form-field"/>
+    </GridPane>
+
+    <!-- Buttons -->
+    <HBox spacing="5" alignment="CENTER_RIGHT">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
+        <Button text="Save" onAction="#handleSave" styleClass="primary-button"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox>

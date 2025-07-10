@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.BlockDetailsController"
+      spacing="10"
+      styleClass="form-container"
+      prefHeight="600">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="← Back" onAction="#handleClose" styleClass="primary-button"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Block Details" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Edit Block" onAction="#handleEditBlock" styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Block Info Section -->
+    <GridPane hgap="20" vgap="10" styleClass="info-grid">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="150" prefWidth="200"/>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="150" prefWidth="200"/>
+        </columnConstraints>
+
+        <Label text="Block Type:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="blockTypeLabel" styleClass="value-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Block ID:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <Label fx:id="blockIdLabel" styleClass="value-label" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+        
+        <Label text="Total Cells:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="totalCellsLabel" styleClass="value-label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Prisoners:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <Label fx:id="occupiedCellsLabel" styleClass="value-label" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+        
+        <Label text="Total Expenses:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label fx:id="totalExpensesLabel" styleClass="value-label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        
+        <Label text="Medical Department:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <Label fx:id="medicalDeptLabel" styleClass="value-label" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+    </GridPane>
+
+    <!-- Main Content -->
+    <SplitPane VBox.vgrow="ALWAYS" orientation="HORIZONTAL">
+        <!-- Left Side: Cells -->
+        <VBox spacing="10">
+            <TitledPane text="Cells" expanded="true" VBox.vgrow="ALWAYS">
+                <VBox spacing="10">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="cellSearchField" promptText="Search cells..." HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="cellFilterComboBox" promptText="Filter"/>
+                        <Button text="Add Cell" onAction="#handleAddCell" styleClass="primary-button"/>
+                    </HBox>
+                    
+                    <TableView fx:id="cellsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="cellIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="cellTypeColumn" text="Type" prefWidth="100"/>
+                            <TableColumn fx:id="cellCapacityColumn" text="Capacity" prefWidth="120"/>
+                            <TableColumn fx:id="cellOccupancyColumn" text="Occupancy" prefWidth="120"/>
+                            <TableColumn fx:id="cellActionsColumn" text="Actions" prefWidth="100"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No cells found"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+        </VBox>
+
+        <!-- Right Side: Rooms -->
+        <VBox spacing="10">
+            <TitledPane text="Rooms" expanded="true" VBox.vgrow="ALWAYS">
+                <VBox spacing="10">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="roomSearchField" promptText="Search rooms..." HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="roomFilterComboBox" promptText="Filter"/>
+                        <Button text="Add Room" onAction="#handleAddRoom" styleClass="primary-button"/>
+                    </HBox>
+                    
+                    <TableView fx:id="roomsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="roomIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="roomTypeColumn" text="Type" prefWidth="100"/>
+                            <TableColumn fx:id="roomDescriptionColumn" text="Description" prefWidth="150"/>
+                            <TableColumn fx:id="roomDepartmentColumn" text="Department" prefWidth="100"/>
+                            <TableColumn fx:id="roomActionsColumn" text="Actions" prefWidth="100"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No rooms found"/>
+                        </placeholder>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+        </VBox>
+    </SplitPane>
+
+    <stylesheets>
+        <URL value="@../styles/dashboard.css"/>
+    </stylesheets>
+</VBox> 
